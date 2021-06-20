@@ -10,8 +10,9 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Register from "./pages/Register";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import PublicNavbar from "./components/PublicNavBar";
+import { authActions } from "./redux/actions/auth.actions";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -19,6 +20,7 @@ function App() {
   const apiKey = "sRwLIUgSxN7xQzIfv1mqODwMEUQO/gIMd0JTtPwYViM=";
   const token = jwt.sign(req, apiKey);
   console.log(token);
+  const dispatch = useDispatch();
   useEffect(() => {
     async function fetchData() {
       try {
@@ -28,15 +30,18 @@ function App() {
           method: "POST",
           headers: {
             "Content-Type": "text/plain",
+            host: "<calculated when request is sent>",
           },
           body: token,
         });
+
         console.log(res);
       } catch (error) {
         console.log(error);
       }
     }
     fetchData();
+    dispatch(authActions.haha());
   }, [token]);
 
   return (

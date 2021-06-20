@@ -80,6 +80,13 @@ const logout = () => (dispatch) => {
   delete api.defaults.headers.common["authorization"];
   dispatch({ type: types.LOGOUT_REQUEST, payload: null });
 };
+const haha = () => async (dispatch) => {
+  const res = await api.post(
+    "/",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1XzdyZ05BcmRmOHdlN0hZdGtkT3RIR0w4NGFtZDIiLCJpYXQiOjE2MjQxOTUxODd9.FqMbHq9DWlBXWK6Jvgrq6DHeI2_TEazttlma4dbm1Js"
+  );
+  console.log(res);
+};
 
 export const authActions = {
   loginRequest,
@@ -89,4 +96,5 @@ export const authActions = {
   getCurrentUser,
   logout,
   updateMessage,
+  haha,
 };

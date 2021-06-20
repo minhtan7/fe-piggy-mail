@@ -2,7 +2,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_API + "/api",
+  baseURL:
+    "https://us-central1-ohyay-prod-d7acf.cloudfunctions.net/ohyayapi/list-workspaces",
   headers: {
     "Content-Type": "application/json",
   },
